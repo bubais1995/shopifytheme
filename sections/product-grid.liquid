@@ -1,0 +1,34 @@
+<section class="product-grid">
+  {% for product in collections[section.settings.collection].products limit: section.settings.limit %}
+    <div class="product-card">
+      <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+      <div class="product-info">
+        <h3 class="product-title">{{ product.title }}</h3>
+        <p class="product-price">{{ product.price | money }}</p>
+        <a href="{{ product.url }}" class="btn">View Product</a>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "default": "all"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Number of products",
+      "min": 1,
+      "max": 20,
+      "default": 8
+    }
+  ]
+}
+{% endschema %}

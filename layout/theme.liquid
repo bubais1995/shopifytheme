@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  {{ content_for_header }}
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">{{ shop.name }}</div>
+        <div class="search">
+          <form action="/search" method="get">
+            <input type="text" name="q" placeholder="Search products..." required>
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/collections/all">Shop</a></li>
+            <li><a href="/pages/about">About</a></li>
+            <li><a href="/pages/contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {{ content_for_layout }}
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="{{ 'theme.js' | asset_url }}"></script>
+</body>
+</html>

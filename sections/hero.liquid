@@ -1,0 +1,51 @@
+<div class="hero" style="background: linear-gradient(135deg, {{ section.settings.bg_color1 }} 0%, {{ section.settings.bg_color2 }} 100%);">
+  <div class="container">
+    <h1>{{ section.settings.title }}</h1>
+    <p>{{ section.settings.subtitle }}</p>
+    <a href="{{ section.settings.button_url }}" class="btn">{{ section.settings.button_text }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Discover amazing products"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "color",
+      "id": "bg_color1",
+      "label": "Background Color 1",
+      "default": "#667eea"
+    },
+    {
+      "type": "color",
+      "id": "bg_color2",
+      "label": "Background Color 2",
+      "default": "#764ba2"
+    }
+  ]
+}
+{% endschema %}
