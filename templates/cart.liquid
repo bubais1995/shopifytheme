@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>Your Cart</h1>
+  {% if cart.item_count > 0 %}
+    <div class="cart-items">
+      {% for item in cart.items %}
+        <div class="cart-item">
+          <img src="{{ item.image | img_url: 'small' }}" alt="{{ item.title }}">
+          <div class="item-info">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.price | money }} x {{ item.quantity }}</p>
+            <p>Total: {{ item.line_price | money }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="cart-total">
+      <p>Total: {{ cart.total_price | money }}</p>
+      <a href="/checkout" class="btn">Checkout</a>
+    </div>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+</div>
+
+<style>
+.cart-items {
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.cart-total {
+  text-align: right;
+}
+</style>

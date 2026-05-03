@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="product-detail">
+    <div class="product-images">
+      <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
+    </div>
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <p class="price">{{ product.price | money }}</p>
+      <div class="description">{{ product.description }}</div>
+      <form action="/cart/add" method="post">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <button type="submit" class="btn">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+.product-detail {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.product-images img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin: 1rem 0;
+}
+
+.description {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .product-detail {
+    flex-direction: column;
+  }
+}
+</style>
